@@ -1,27 +1,36 @@
 package javapro.dz5_2;
 
-class Robot extends Participant {
-    public Robot(String name, int maxRunDistance, int maxJumpHeight) {
-        super(name, maxRunDistance, maxJumpHeight);
-    }
+public class Main {
+    public static void main(String[] args) {
+        Participant[] participants = {
+                new Human("Human 1", 100, 2),
+                new Cat("Cat 1", 50, 3),
+                new Robot("Robot 1", 150, 1)
+        };
 
-    @Override
-    public void run(int distance) {
-        if (distance <= maxRunDistance) {
-            System.out.println(String.format("%s пробіг дистанцію %d",name,distance));
-        } else {
-            System.out.println(String.format("%s не зміг пробігти дистанцію %d",name,distance));
-            throw new RuntimeException();
-        }
-    }
+        Obstacle[] obstacles = {
+                new Treadmill(50), new Wall(1),
+                new Treadmill(100), new Wall(2),
+                new Treadmill(150), new Wall(3)
+        };
 
-    @Override
-    public void jump(int height) {
-        if (height <= maxJumpHeight) {
-            System.out.println(String.format("%s перестрибнув стіну висотою %d",name,height));
-        } else {
-            System.out.println(String.format("%s не зміг перестрибнути стіну висотою %d",name,height));
-            throw new RuntimeException();
+        for (Participant p : participants) {
+            boolean isOut = false;
+            System.out.println(String.format("Учасник %s готується до проходження перешкод",p.name));
+
+            for (Obstacle o : obstacles) {
+                System.out.println(String.format("Учасник %s підходить до перешкоди",p.name));
+
+                if (!o.overcome(p)) {
+                    System.out.println(String.format("Учасник %s не зміг пройти перешкоду і вилітає з гри",p.name));
+                    isOut = true;
+                    break;
+                }
+            }
+
+            if (!isOut) {
+                System.out.println(String.format("Учасник %s успішно пройшов всі перешкоди і фінішував",p.name));
+            }
         }
     }
 }

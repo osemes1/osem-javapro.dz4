@@ -1,66 +1,27 @@
 package javapro.dz5_2;
 
-public class Robot extends Behavior {
-
-    private static final String NAME = "Robot";
-
-    private String behRun();
-    private String behJump();
-
-
-
-
-    /*
-    private double triangleSideA;
-    private double triangleSideB;
-    private double triangleSideC;
-
-    public Triangle(double triangleSideA, double triangleSideB, double triangleSideC) {
-        this.triangleSideA = triangleSideA;
-        this.triangleSideB = triangleSideB;
-        this.triangleSideC = triangleSideC;
+class Robot extends Participant {
+    public Robot(String name, int maxRunDistance, int maxJumpHeight) {
+        super(name, maxRunDistance, maxJumpHeight);
     }
 
     @Override
-    public double getArea() {
-
-        //вираховуємо напівперіметр трикутника
-        double p = (triangleSideA + triangleSideB + triangleSideC) / 2;
-
-        //вираховуємо площу трикутника
-        double area = Math.sqrt(p * (p - triangleSideA) * (p - triangleSideB) * (p - triangleSideC));
-        return area;
+    public void run(int distance) {
+        if (distance <= maxRunDistance) {
+            System.out.println(String.format("%s пробіг дистанцію %d",name,distance));
+        } else {
+            System.out.println(String.format("%s не зміг пробігти дистанцію %d",name,distance));
+            throw new RuntimeException();
+        }
     }
 
     @Override
-    public String getName() {
-        return NAME;
+    public void jump(int height) {
+        if (height <= maxJumpHeight) {
+            System.out.println(String.format("%s перестрибнув стіну висотою %d",name,height));
+        } else {
+            System.out.println(String.format("%s не зміг перестрибнути стіну висотою %d",name,height));
+            throw new RuntimeException();
+        }
     }
-
-    public double getTriangleSideA() {
-        return triangleSideA;
-    }
-
-    public void setTriangleSideA(double triangleSideA) {
-        this.triangleSideA = triangleSideA;
-    }
-
-    public double getTriangleSideB() {
-        return triangleSideB;
-    }
-
-    public void setTriangleSideB(double triangleSideB) {
-        this.triangleSideB = triangleSideB;
-    }
-
-    public double getTriangleSideC() {
-        return triangleSideC;
-    }
-
-    public void setTriangleSideC(double triangleSideC) {
-        this.triangleSideC = triangleSideC;
-    }
-
-     */
 }
-
