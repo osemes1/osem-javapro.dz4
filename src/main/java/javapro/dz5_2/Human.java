@@ -1,38 +1,27 @@
 package javapro.dz5_2;
 
-public class Human extends Behavior {
-
-    private static final String NAME = "Man";
-
-    private String behRun();
-    private String behJump();
-
-
-
-
-    /*
-    private double circleRadius;
-
-    public Circle(double circleRadius) {
-        this.circleRadius = circleRadius;
+class Human extends Participant {
+    public Human(String name, int maxRunDistance, int maxJumpHeight) {
+        super(name, maxRunDistance, maxJumpHeight);
     }
 
     @Override
-    public double getArea(){
-        double area = Math.PI * circleRadius * circleRadius;
-        return area;
+    public void run(int distance) {
+        if (distance <= maxRunDistance) {
+            System.out.println(String.format("%s пробіг дистанцію %d",name,distance));
+        } else {
+            System.out.println(String.format("%s не зміг пробігти дистанцію %d",name,distance));
+            throw new RuntimeException();
+        }
     }
 
     @Override
-    public String getName() {
-        return NAME;
+    public void jump(int height) {
+        if (height <= maxJumpHeight) {
+            System.out.println(String.format("%s перестрибнув стіну висотою %d",name,height));
+        } else {
+            System.out.println(String.format("%s не зміг перестрибнути стіну висотою %d",name,height));
+            throw new RuntimeException();
+        }
     }
-
-    public double getCircleRadius() {
-        return circleRadius;
-    }
-
-    public void setRadius(double circleRadius) {
-        this.circleRadius = circleRadius;
-    } */
 }

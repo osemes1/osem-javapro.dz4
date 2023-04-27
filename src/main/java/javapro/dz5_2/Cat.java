@@ -1,52 +1,27 @@
 package javapro.dz5_2;
 
-public class Cat extends Behavior {
-
-    private static final String NAME = "Cat";
-
-    private String behRun();
-    private String behJump();
-
-
-
-
-    /*
-
-    private static final String NAME = "Cat";
-
-    private double width;
-    private double height;
-
-    public Square(double width, double height) {
-        this.width = width;
-        this.height = height;
+class Cat extends Participant {
+    public Cat(String name, int maxRunDistance, int maxJumpHeight) {
+        super(name, maxRunDistance, maxJumpHeight);
     }
 
     @Override
-    public double getArea() {
-        return width * height;
+    public void run(int distance) {
+        if (distance <= maxRunDistance) {
+            System.out.println(String.format("%s пробіг дистанцію %d",name,distance));
+        } else {
+            System.out.println(String.format("%s не зміг пробігти дистанцію %d",name,distance));
+            throw new RuntimeException();
+        }
     }
 
     @Override
-    public String getName() {
-        return NAME;
+    public void jump(int height) {
+        if (height <= maxJumpHeight) {
+            System.out.println(String.format("%s перестрибнув стіну висотоюю %d",name,height));
+        } else {
+            System.out.println(String.format("%s не зміг перестрибнути стіну висотою %d",name,height));
+            throw new RuntimeException();
+        }
     }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-     */
 }
