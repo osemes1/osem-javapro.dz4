@@ -29,13 +29,13 @@ public class Dog extends Animal {
     @Override
     public void run(int length) {
         super.run(length);
-        if ((length >= 0) && (length <= MAX_RUN_LENGTH)) System.out.println(String.format("Бобік пробіг %s м",length));
+        if ((length >= 10) && (length <= MAX_RUN_LENGTH)) System.out.println(String.format("Бобік пробіг %s м",length));
     }
 
     @Override
     public void swim(int length) {
         super.swim(length);
-        if ((length >= 0) && (length <= MAX_SWIM_LENGTH)) System.out.println(String.format("Бобік проплив %s м",length));
+        if ((length >= 20) && (length <= MAX_SWIM_LENGTH)) System.out.println(String.format("Бобік проплив %s м",length));
         else System.out.println("swim: false");
     }
 
