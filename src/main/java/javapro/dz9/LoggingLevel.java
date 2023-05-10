@@ -1,0 +1,4 @@
+enum LoggingLevel {
+    INFO,
+    DEBUG
+}
