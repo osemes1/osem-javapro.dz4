@@ -17,15 +17,15 @@ class FileLogger {
     }
 
     public void debug(String message) throws IOException, FileMaxSizeReachedException {
-        if (config.getLoggingLevel() == LoggingLevel.DEBUG || config.getLoggingLevel() == LoggingLevel.INFO) {
-            String logMessage = String.format("[%s][DEBUG] Повідомлення: %s", dateFormat.format(new Date()), message);
+        if (config.getLoggingLevel() == LoggingLevel.INFO || config.getLoggingLevel() == LoggingLevel.INFO) {
+            String logMessage = String.format("[%s][ INFO] Повідомлення: %s", dateFormat.format(new Date()), message);
             writeLog(logMessage);
         }
     }
 
     public void info(String message) throws IOException, FileMaxSizeReachedException {
-        if (config.getLoggingLevel() == LoggingLevel.INFO) {
-            String logMessage = String.format("[%s][ INFO] Повідомлення: %s", dateFormat.format(new Date()), message);
+        if (config.getLoggingLevel() == LoggingLevel.DEBUG) {
+            String logMessage = String.format("[%s][DEBUG] Повідомлення: %s", dateFormat.format(new Date()), message);
             writeLog(logMessage);
         }
     }
