@@ -5,27 +5,36 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 class FileLogger {
     private FileLoggerConfiguration config;
     private FileWriter fileWriter;
     private DateFormat dateFormat;
 
-    public FileLogger(FileLoggerConfiguration config) throws IOException {
+
+        public FileLogger(FileLoggerConfiguration config) throws IOException {
         this.config = config;
         this.fileWriter = new FileWriter(config.getFilePath(), true);
         this.dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm");
     }
+/*
+    public FileLogger(FileLoggerConfiguration config, FileWriter fileWriter, DateFormat dateFormat) throws IOException {
+        this.config = config;
+        this.fileWriter = fileWriter;
+        this.dateFormat = dateFormat;
+    }
+*/
 
     public void debug(String message) throws IOException, FileMaxSizeReachedException {
-        if (config.getLoggingLevel() == LoggingLevel.INFO || config.getLoggingLevel() == LoggingLevel.INFO) {
-            String logMessage = String.format("[%s][ INFO] Повідомлення: %s", dateFormat.format(new Date()), message);
+        if (config.getLoggingLevel() == LoggingLevel.DEBUG || config.getLoggingLevel() == LoggingLevel.INFO) {
+            String logMessage = String.format("[%s][DEBUG] Повідомлення: %s", dateFormat.format(new Date()), message);
             writeLog(logMessage);
         }
     }
 
     public void info(String message) throws IOException, FileMaxSizeReachedException {
-        if (config.getLoggingLevel() == LoggingLevel.DEBUG) {
-            String logMessage = String.format("[%s][DEBUG] Повідомлення: %s", dateFormat.format(new Date()), message);
+        if (config.getLoggingLevel() == LoggingLevel.INFO) {
+            String logMessage = String.format("[%s][ INFO] Повідомлення: %s", dateFormat.format(new Date()), message);
             writeLog(logMessage);
         }
     }
